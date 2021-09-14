@@ -1,11 +1,12 @@
+//go:build go1.8
+// +build go1.8
+
 //
 // Copyright 2010 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
 //
 // This is a verbatim copy of src/net/pipe.go
 //
-// +build go1.8
-
 package inprocess
 
 import (
