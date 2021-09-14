@@ -300,7 +300,7 @@ func (r *bootstrapper) pathJoin(elems ...string) string {
 	default:
 		root = r.config.OS.ID
 	}
-	return filepath.Join(append([]string{root}, elems...)...)
+	return filepath.Join(append([]string{"assets", root}, elems...)...)
 }
 
 func (r portRanges) isEmpty() bool {

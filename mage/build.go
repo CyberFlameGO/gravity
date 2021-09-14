@@ -77,7 +77,7 @@ func (r Build) Go(ctx context.Context) (err error) {
 
 // Linux builds Go Linux binaries using consistent build environment.
 func (Build) Linux(ctx context.Context) (err error) {
-	mg.CtxDeps(ctx, Build.BuildContainer, Build.Selinux)
+	mg.CtxDeps(ctx, Build.BuildContainer, Build.SelinuxPolicy)
 
 	m := root.Target("build:linux")
 	defer func() { m.Complete(err) }()
@@ -152,25 +152,6 @@ func (Build) BuildContainer(ctx context.Context) (err error) {
 		SetDockerfile("build.assets/Dockerfile.buildx").
 		Build(ctx, "./build.assets")
 
-	return trace.Wrap(err)
-}
-
-// Selinux builds internal selinux code
-func (Build) Selinux(ctx context.Context) (err error) {
-	mg.CtxDeps(ctx, Build.SelinuxPolicy)
-
-	m := root.Target("build:selinux")
-	defer func() { m.Complete(err) }()
-
-	uptodate := IsUpToDate("lib/system/selinux/internal/policy/policy_embed.go",
-		"lib/system/selinux/internal/policy/policy.go",
-		"lib/system/selinux/internal/policy/assets",
-	)
-	if uptodate {
-		return nil
-	}
-
-	_, err = m.Exec().Run(ctx, "make", "-C", "lib/system/selinux")
 	return trace.Wrap(err)
 }
 

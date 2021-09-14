@@ -55,7 +55,6 @@ require (
 	github.com/gravitational/trace v1.1.14
 	github.com/gravitational/ttlmap v0.0.0-20171116003245-91fd36b9004c
 	github.com/gravitational/version v0.0.2-0.20170324200323-95d33ece5ce1
-	github.com/gravitational/vfsgen v0.0.0-20181202132449-6a9ea43bcacd
 	github.com/jonboulle/clockwork v0.2.0
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/kardianos/osext v0.0.0-20170510131534-ae77be60afb1 // indirect

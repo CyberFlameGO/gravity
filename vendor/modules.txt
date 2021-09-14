@@ -551,8 +551,6 @@ github.com/gravitational/ttlmap
 github.com/gravitational/ttlmap/v2
 # github.com/gravitational/version v0.0.2-0.20170324200323-95d33ece5ce1
 github.com/gravitational/version
-# github.com/gravitational/vfsgen v0.0.0-20181202132449-6a9ea43bcacd
-github.com/gravitational/vfsgen
 # github.com/gregjones/httpcache v0.0.0-20180305231024-9cad4c3443a7
 github.com/gregjones/httpcache
 github.com/gregjones/httpcache/diskcache
@@ -739,8 +737,6 @@ github.com/santhosh-tekuri/jsonschema/mediatypes
 github.com/satori/go.uuid
 # github.com/shopspring/decimal v1.2.0
 github.com/shopspring/decimal
-# github.com/shurcooL/httpfs v0.0.0-20190707220628-8d4bc4ba7749
-github.com/shurcooL/httpfs/vfsutil
 # github.com/shurcooL/sanitized_anchor_name v1.0.0
 github.com/shurcooL/sanitized_anchor_name
 # github.com/sirupsen/logrus v1.8.1 => github.com/gravitational/logrus v1.4.3
