@@ -10,7 +10,6 @@ require (
 	github.com/alecthomas/repr v0.0.0-20181024024818-d37bc2a10ba1 // indirect
 	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751
 	github.com/aws/aws-sdk-go v1.37.15
-	github.com/boltdb/bolt v1.3.1
 	github.com/boombuler/barcode v0.0.0-20161226211916-fe0f26ff6d26 // indirect
 	github.com/buger/goterm v0.0.0-20140416104154-af3f07dadc88
 	github.com/cenkalti/backoff v2.2.1+incompatible
@@ -92,6 +91,7 @@ require (
 	github.com/vulcand/oxy v0.0.0-20160623194703-40720199a16c
 	github.com/vulcand/predicate v1.1.0
 	github.com/xtgo/set v1.0.0
+	go.etcd.io/bbolt v1.3.5
 	golang.org/x/crypto v0.0.0-20210220033148-5ea612d1eb83
 	golang.org/x/net v0.0.0-20210224082022-3d97a244fca7
 	golang.org/x/sys v0.0.0-20210909193231-528a39cd75f3

@@ -95,7 +95,6 @@ func (Build) Linux(ctx context.Context) (err error) {
 	err = m.GolangBuild().
 		SetGOOS("linux").
 		SetGOARCH("amd64").
-		SetEnv("GO111MODULE", "on").
 		SetMod("vendor").
 		AddTag("selinux", "selinux_embed").
 		SetBuildContainerConfig(magnet.BuildContainer{
@@ -123,7 +122,6 @@ func (Build) Darwin(ctx context.Context) (err error) {
 	err = m.GolangBuild().
 		SetGOOS("darwin").
 		SetGOARCH("amd64").
-		SetEnv("GO111MODULE", "on").
 		SetMod("vendor").
 		SetOutputPath(outputPath).
 		AddLDFlags(buildFlags()).

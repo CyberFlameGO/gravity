@@ -28,11 +28,11 @@ import (
 	"github.com/gravitational/gravity/lib/defaults"
 	"github.com/gravitational/gravity/lib/storage"
 	"github.com/gravitational/gravity/lib/utils"
-
-	"github.com/boltdb/bolt"
 	"github.com/gravitational/trace"
+
 	"github.com/jonboulle/clockwork"
 	"github.com/sirupsen/logrus"
+	bolt "go.etcd.io/bbolt"
 )
 
 // NewBolt returns new BoltDB-backed engine
