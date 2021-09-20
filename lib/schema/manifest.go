@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+//go:generate controller-gen object paths=./...
 package schema
 
 import (
@@ -23,7 +24,6 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
-	"time"
 
 	"github.com/gravitational/gravity/lib/constants"
 	"github.com/gravitational/gravity/lib/defaults"
@@ -465,7 +465,7 @@ type Metadata struct {
 	// Author is the application author
 	Author string `json:"author,omitempty"`
 	// CreatedTimestamp is a timestamp the application package was built at
-	CreatedTimestamp time.Time `json:"createdTimestamp,omitempty"`
+	CreatedTimestamp metav1.Time `json:"createdTimestamp,omitempty"`
 	// Hidden allows to hide the app from a list of apps visible in Ops Center
 	Hidden bool `json:"hidden,omitempty"`
 	// Labels is labels attached to the manifest

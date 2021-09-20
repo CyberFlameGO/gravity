@@ -559,7 +559,7 @@ func makeRewriteAppMetadataFunc(setRepository, setName, setVersion string) resou
 		if setVersion != "" {
 			m.Metadata.ResourceVersion = setVersion
 		}
-		m.Metadata.CreatedTimestamp = time.Now().UTC()
+		m.Metadata.CreatedTimestamp = metav1.Time{Time: time.Now().UTC()}
 		return nil
 	}
 }

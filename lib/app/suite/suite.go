@@ -761,7 +761,7 @@ func (r *AppsSuite) importApplicationWithResources(apps app.Applications, vendor
 	c.Assert(progressEntry.State, Equals, string(app.ProgressStateCompleted))
 
 	importedApplication, err := apps.GetImportedApplication(*op)
-	importedApplication.Manifest.Metadata.CreatedTimestamp = time.Time{}
+	importedApplication.Manifest.Metadata.CreatedTimestamp = metav1.Time{}
 
 	c.Assert(err, IsNil)
 	// Adopt attributes that were not known a-priori
