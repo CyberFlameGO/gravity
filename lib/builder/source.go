@@ -45,7 +45,7 @@ type ClusterImageSource interface {
 //
 // The path is expected to be one of the following:
 // * Cluster image manifest file.
-// * Directory with cluster imge manifest file (app.yaml).
+// * Directory with cluster image manifest file (app.yaml).
 // * Helm chart directory.
 func GetClusterImageSource(path string, logger logrus.FieldLogger) (ClusterImageSource, error) {
 	// If this is a file, assume this as a cluster image manifest file.
