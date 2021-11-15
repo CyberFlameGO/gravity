@@ -168,18 +168,19 @@ func pullPackage(req PackagePullRequest) (*pack.PackageEnvelope, error) {
 		return nil, trace.Wrap(err)
 	}
 
-	env, err := req.DstPack.ReadPackageEnvelope(req.Package)
+	dstEnv, err := req.DstPack.ReadPackageEnvelope(req.Package)
 	if err != nil && !trace.IsNotFound(err) {
 		return nil, trace.Wrap(err)
 	}
 
-	if env != nil && !req.Upsert {
+	if dstEnv != nil && !req.Upsert {
 		req.Infof("Package %v already exists.", req.Package)
 		return nil, trace.AlreadyExists("package %v already exists", req.Package)
 	}
 
 	req.Infof("Pulling package %v.", req.Package)
 
+	var env *pack.PackageEnvelope
 	reader := ioutil.NopCloser(utils.NopReader())
 	if req.MetadataOnly {
 		env, err = req.SrcPack.ReadPackageEnvelope(req.Package)
@@ -203,19 +204,14 @@ func pullPackage(req PackagePullRequest) (*pack.PackageEnvelope, error) {
 		return nil, trace.Wrap(err)
 	}
 
-	// Copy runtime labels
-	if req.Labels == nil {
-		req.Labels = make(map[string]string)
-	}
-	for label, value := range env.RuntimeLabels {
-		if _, exists := req.Labels[label]; !exists {
-			req.Labels[label] = value
-		}
-	}
-
 	if req.Upsert {
+		var dstLabels map[string]string
+		if dstEnv != nil {
+			dstLabels = dstEnv.RuntimeLabels
+		}
 		env, err = req.DstPack.UpsertPackage(
-			env.Locator, reader, pack.WithLabels(req.Labels))
+			env.Locator, reader, pack.WithLabels(utils.CombineLabels(
+				req.Labels, env.RuntimeLabels, dstLabels)))
 	} else {
 		env, err = req.DstPack.CreatePackage(
 			env.Locator, reader, pack.WithLabels(req.Labels))
